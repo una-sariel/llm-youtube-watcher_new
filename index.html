@@ -1,242 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>LLM YouTube Watcher - AI Powered</title>
-    <meta http-equiv="refresh" content="3600">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f5f5f5;
-            padding: 40px;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px 30px;
-        }
-        .header h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
-        .header p {
-            opacity: 0.9;
-            font-size: 14px;
-        }
-        .stats {
-            background: #f8f9fa;
-            padding: 15px 30px;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        .stat-item {
-            background: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            color: #333;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-        .stat-number {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 18px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th {
-            background: #4a5568;
-            color: white;
-            padding: 14px 16px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        td {
-            padding: 16px;
-            border-bottom: 1px solid #e2e8f0;
-            vertical-align: top;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        tr:hover {
-            background: #f7fafc;
-        }
-        .speaker {
-            font-weight: bold;
-            color: #2d3748;
-            margin-bottom: 6px;
-        }
-        .badge {
-            display: inline-block;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 500;
-        }
-        .badge-transcript {
-            background: #48bb78;
-            color: white;
-        }
-        .badge-title {
-            background: #ed8936;
-            color: white;
-        }
-        .video-title {
-            font-weight: 500;
-            color: #2d3748;
-        }
-        .video-title a {
-            color: #3182ce;
-            text-decoration: none;
-        }
-        .video-title a:hover {
-            text-decoration: underline;
-        }
-        .key-point {
-            margin: 6px 0;
-            padding-left: 18px;
-            position: relative;
-        }
-        .key-point:before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-        }
-        .footer {
-            background: #f8f9fa;
-            padding: 15px 30px;
-            text-align: center;
-            color: #718096;
-            font-size: 12px;
-            border-top: 1px solid #e0e0e0;
-        }
-        @media (max-width: 768px) {
-            body { padding: 20px; }
-            th, td { padding: 10px; }
-            .key-point { font-size: 12px; }
-        }
-    </style>
+<meta charset="utf-8">
+<title>LLM YouTube Watcher</title>
+<meta http-equiv="refresh" content="3600">
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; margin: 40px; background: #f0f0f0; }
+h1 { color: #333; border-bottom: 3px solid #4CAF50; padding-bottom: 10px; }
+.timestamp { color: #666; font-size: 14px; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+th { background: #4CAF50; color: white; padding: 12px; text-align: left; }
+td { padding: 12px; border-bottom: 1px solid #ddd; vertical-align: top; }
+tr:hover { background: #f5f5f5; }
+.video-title a { color: #2196F3; text-decoration: none; font-weight: bold; }
+.video-title a:hover { text-decoration: underline; }
+.key-point { margin: 4px 0; padding-left: 16px; position: relative; }
+.key-point:before { content: "•"; position: absolute; left: 0; color: #4CAF50; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; margin-left: 8px; }
+.badge-transcript { background: #4CAF50; color: white; }
+.footer { margin-top: 20px; text-align: center; color: #666; font-size: 12px; }
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>🤖 LLM YouTube Watcher</h1>
-        <p>AI-powered analysis of LLM content from top YouTube channels</p>
-    </div>
-    <div class="stats">
-        <div class="stat-item"><span class="stat-number">6</span> videos analyzed</div>
-        <div class="stat-item"><span class="stat-number">6</span> with transcripts</div>
-        <div class="stat-item"><span class="stat-number">3</span> channels monitored</div>
-        <div class="stat-item">🤖 AI: Zhipu GLM-4-Air</div>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th style="width: 15%">Speaker</th>
-                <th style="width: 30%">Video</th>
-                <th style="width: 20%">Main Topic</th>
-                <th style="width: 25%">Key LLM Points</th>
-                <th style="width: 10%">Channel Relation</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="speaker">Andrej Karpathy</div>
-                    <span class="badge badge-transcript"> Transcript</span>
-                </td>
-                <td>
-                    <div class="video-title"><a href="https://youtube.com/watch?v=EWvNQjAaOHw" target="_blank">How I use LLMs</a></div>
-                </td>
-                <td>Practical applications of LLMs in daily life and work</td>
-                <td><div class="key-point">Introduction to LLMs for general audience</div><div class="key-point">Review of LLM fundamentals from previous video</div><div class="key-point">Focus on practical applications and examples</div></td>
-                <td>Educational content from AI expert Andrej Karpathy</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="speaker">Andrej Karpathy</div>
-                    <span class="badge badge-transcript"> Transcript</span>
-                </td>
-                <td>
-                    <div class="video-title"><a href="https://youtube.com/watch?v=7xTGNNLPyMI" target="_blank">Deep Dive into LLMs like ChatGPT</a></div>
-                </td>
-                <td>Introduction to large language models like ChatGPT</td>
-                <td><div class="key-point">Comprehensive introduction to LLMs for general audience</div><div class="key-point">Mental models for understanding LLM capabilities and limitations</div><div class="key-point">Explanation of the pipeline for building LLMs</div></td>
-                <td>Educational content from AI expert Andrej Karpathy</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="speaker">Nomadic Samuel</div>
-                    <span class="badge badge-transcript"> Transcript</span>
-                </td>
-                <td>
-                    <div class="video-title"><a href="https://youtube.com/watch?v=44D9CvBTMkw" target="_blank">Pasta Argentina Bodegon</a></div>
-                </td>
-                <td>Restaurant visit and dining experience</td>
-                <td><div class="key-point">Visiting Don Chiquino restaurant</div><div class="key-point">Specializes in pasta</div><div class="key-point">Unique bodegon decor with eclectic collection</div></td>
-                <td>Travel and food vlogging</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="speaker">Nomadic Samuel</div>
-                    <span class="badge badge-transcript"> Transcript</span>
-                </td>
-                <td>
-                    <div class="video-title"><a href="https://youtube.com/watch?v=rf5Y_kBjSV8" target="_blank">Argentine Parrilla feast for lunch in Esquel, Argentina! We ate Bife de Chorizo and Vacio!</a></div>
-                </td>
-                <td>Food and dining experience in Argentina</td>
-                <td><div class="key-point">Visiting a parrilla restaurant in Esquel, Argentina</div><div class="key-point">Trying traditional Argentine beef dishes (Bife de Chorizo and Vacio)</div><div class="key-point">Eating salad and bread with lentil paste</div></td>
-                <td>Travel and food vlogging</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="speaker">Dave Ebbelaar</div>
-                    <span class="badge badge-transcript"> Transcript</span>
-                </td>
-                <td>
-                    <div class="video-title"><a href="https://youtube.com/watch?v=g07IBXhCRKc" target="_blank">The biggest opportunity for developers in 2026</a></div>
-                </td>
-                <td>The future of tech jobs and AI development</td>
-                <td><div class="key-point">Current state of tech industry</div><div class="key-point">Relevance of current tech skills in the future</div><div class="key-point">AI engineering and agentic engineering developments</div></td>
-                <td>Educational content about career development in AI</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="speaker">Dave Ebbelaar</div>
-                    <span class="badge badge-transcript"> Transcript</span>
-                </td>
-                <td>
-                    <div class="video-title"><a href="https://youtube.com/watch?v=mz73sVy6-X8" target="_blank">I Stopped Writing Code - These 5 Skills Are All That Matter</a></div>
-                </td>
-                <td>AI-assisted software development and the changing role of programmers</td>
-                <td><div class="key-point">Rebuilding a desktop application using AI instead of manual coding</div><div class="key-point">Transition from Python to Rust programming language with AI assistance</div><div class="key-point">AI's ability to generate functional code without human intervention</div></td>
-                <td>Technical insights and personal experiences with AI in software development</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="footer">
-        <p>Last updated: 2026-04-26 19:12:58 UTC | Auto-refresh: every 6 hours via GitHub Actions</p>
-        <p>Data source: YouTube Transcript API | AI analysis: Zhipu GLM-4-Air</p>
-    </div>
-</div>
+<h1> LLM YouTube Watcher</h1>
+<div class="timestamp">Last updated: 2026-04-26 19:48:52 | Auto-refresh: hourly</div>
+<table>
+<thead>
+<tr><th style="width:15%">Speaker</th><th style="width:30%">Video</th><th style="width:20%">Main Topic</th><th style="width:25%">Key LLM Points</th><th style="width:10%">Channel Relation</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Andrej Karpathy</strong><span class="badge badge-transcript">Transcript</span></td><td><div class="video-title"><a href="https://youtube.com/watch?v=EWvNQjAaOHw" target="_blank">How I use LLMs</a></div></td><td>Practical applications of LLMs in everyday life and work</td><td><div class="key-point">Introduction to LLMs for general audience</div><div class="key-point">Review of previous video on LLM fundamentals and cognition</div><div class="key-point">Focus on practical examples and settings</div></td><td>Educational content from Andrej Karpathy focusing on practical LLM applications</td></tr>
+<tr><td><strong>Andrej Karpathy</strong><span class="badge badge-transcript">Transcript</span></td><td><div class="video-title"><a href="https://youtube.com/watch?v=7xTGNNLPyMI" target="_blank">Deep Dive into LLMs like ChatGPT</a></div></td><td>Introduction to large language models like ChatGPT</td><td><div class="key-point">Comprehensive introduction to LLMs for general audience</div><div class="key-point">Understanding how LLMs work and generate text</div><div class="key-point">Exploring the capabilities and limitations of LLMs</div></td><td>Educational content from AI expert Andrej Karpathy</td></tr>
+<tr><td><strong>Dave Ebbelaar</strong><span class="badge badge-transcript">Transcript</span></td><td><div class="video-title"><a href="https://youtube.com/watch?v=g07IBXhCRKc" target="_blank">The biggest opportunity for developers in 2026</a></div></td><td>Future of tech jobs and AI development</td><td><div class="key-point">Current state of tech industry</div><div class="key-point">Relevance of current tech skills in the future</div><div class="key-point">AI engineering and agentic engineering developments</div></td><td>Educational content addressing career concerns in AI</td></tr>
+<tr><td><strong>Dave Ebbelaar</strong><span class="badge badge-transcript">Transcript</span></td><td><div class="video-title"><a href="https://youtube.com/watch?v=mz73sVy6-X8" target="_blank">I Stopped Writing Code - These 5 Skills Are All That Matter</a></div></td><td>AI-assisted software development and the changing role of programmers</td><td><div class="key-point">Rebuilding a desktop application using AI without manual coding</div><div class="key-point">Transition from Python to Rust programming language</div><div class="key-point">AI's capability to write entire codebases</div></td><td>Technical insights and experiences in AI-powered development</td></tr>
+</tbody>
+</table>
+<div class="footer"><p>4 videos analyzed | 4 with transcripts | Auto-refresh: every 6 hours</p><p>Data: YouTube Transcript API | AI: Zhipu GLM-4-Air | Channels: Andrej Karpathy, Dave Ebbelaar</p></div>
 </body>
 </html>
