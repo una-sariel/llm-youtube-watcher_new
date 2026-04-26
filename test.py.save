@@ -1,0 +1,134 @@
+from youtube_transcript_api import YouTubeTranscriptApi
+
+def test_transcript(video_id):
+    """测试本地能不能拿到字幕"""
+    try:
+        ytt_api = YouTubeTranscriptApi()
+        transcript_list = ytt_api.list(video_id)
+        
+        print(f"✅ 成功连接！可用字幕: {[t.language_code for t in transcript_list]}")
+        
+        # 获取英文字幕
+        transcript = transcript_list.find_transcript(['en'])
+        fetched = transcript.fetch()
+        
+        # 修正：正确提取文本的方式
+        text_parts = []
+        for snippet in fetched:
+            # 新版 API 返回的是对象，需要用 .text 属性
+            text_parts.append(snippet.text)
+        
+        text = ' '.join(text_parts)
+        print(f"✅ 字幕获取成功！长度: {len(text)} 字符")
+        print(f"前300字符: {text[:300]}...")
+        return True
+        
+    except Exception as e:
+        print(f"❌ 失败: {e}")
+        return False
+
+# 测试
+print("="*50)
+print("测试本地网络获取字幕")
+print("视频: Andrej Karpathy - Let's build GPT")
+print("="*50)
+
+test_transcript("kCc8FmEb1nY")from youtube_transcript_api import YouTubeTranscriptApi
+
+def test_transcript(video_id):
+    """测试本地能不能拿到字幕"""
+    try:
+        ytt_api = YouTubeTranscriptApi()
+        transcript_list = ytt_api.list(video_id)
+        
+        print(f"✅ 成功连接！可用字幕: {[t.language_code for t in transcript_list]}")
+        
+        # 获取英文字幕
+        transcript = transcript_list.find_transcript(['en'])
+        fetched = transcript.fetch()
+        
+        # 修正：正确提取文本的方式
+        text_parts = []
+        for snippet in fetched:
+            # 新版 API 返回的是对象，需要用 .text 属性
+            text_parts.append(snippet.text)
+        
+        text = ' '.join(text_parts)
+        print(f"✅ 字幕获取成功！长度: {len(text)} 字符")
+        print(f"前300字符: {text[:300]}...")
+        return True
+        
+    except Exception as e:
+        print(f"❌ 失败: {e}")
+        return False
+
+# 测试
+print("="*50)
+print("测试本地网络获取字幕")
+print("视频: Andrej Karpathy - Let's build GPT")
+print("="*50)
+
+test_transcript("kCc8FmEb1nfrom youtube_transcript_api import YouTubeTranscriptApi
+
+def test_transcript(video_id):
+    """测试本地能不能拿到字幕"""
+    try:
+        ytt_api = YouTubeTranscriptApi()
+        transcript_list = ytt_api.list(video_id)
+        
+        print(f"✅ 成功连接！可用字幕: {[t.language_code for t in transcript_list]}")
+        
+        # 获取英文字幕
+        transcript = transcript_list.find_transcript(['en'])
+        fetched = transcript.fetch()
+        
+        # 修正：正确提取文本的方式
+        text_parts = []
+        for snippet in fetched:
+            # 新版 API 返回的是对象，需要用 .text 属性
+            text_parts.append(snippet.text)
+        
+        text = ' '.join(text_parts)
+        print(f"✅ 字幕获取成功！长度: {len(text)} 字符")
+        print(f"前300字符: {text[:300]}...")
+        return True
+        
+    except Exception as e:
+        print(f"❌ 失败: {e}")
+        return False
+
+# 测试
+print("="*50)
+print("测试本地网络获取字幕")
+print("视频: Andrej Karpathy - Let's build GPT")
+print("="*50)
+
+test_transcript("kCc8FmEb1nY")from youtube_transcript_api import YouTubeTranscriptApi
+def test_transcript(video_id):
+    """测试本地能不能拿到字幕"""
+    try:
+        ytt_api = YouTubeTranscriptApi()
+        transcript_list = ytt_api.list(video_id)
+        
+        print(f"✅ 成功连接！可用字幕: {[t.language_code for t in transcript_list]}")
+        
+        # 获取英文字幕
+        transcript = transcript_list.find_transcript(['en'])
+        fetched = transcript.fetch()
+        
+        text = ' '.join([s['text'] for s in fetched])
+        print(f"✅ 字幕获取成功！长度: {len(text)} 字符")
+        print(f"前300字符: {text[:300]}...")
+        return True
+        
+    except Exception as e:
+        print(f"❌ 失败: {e}")
+        return False
+
+# 测试 Karpathy 的视频（确定有字幕）
+print("="*50)
+print("测试本地网络获取字幕")
+print("视频: Andrej Karpathy - Let's build GPT")
+print("="*50)
+
+test_transcript("kCc8FmEb1nY")
