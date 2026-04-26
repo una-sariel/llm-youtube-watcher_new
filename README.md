@@ -33,12 +33,16 @@ LLM YouTube Watcher is an automated monitoring tool that tracks selected YouTube
 | Dave Ebbelaar | AI project practice and deployment |
 
 ## Project Structure
+
+```
 llm-youtube-watcher/
-├── main.py # Main Python script
-├── index.html # Generated HTML dashboard
-├── .github/workflows/
-│ └── update.yml # GitHub Actions cron job
-└── README.md # Project documentation
+├── main.py                      # Main Python script
+├── index.html                   # Generated HTML dashboard
+├── .github/
+│   └── workflows/
+│       └── update.yml           # GitHub Actions cron job
+└── README.md                    # Project documentation
+```
 
 ## How It Works
 
@@ -106,7 +110,3 @@ GitHub Actions runs the script every 6 hours and deploys the updated `index.html
 ## License
 
 MIT
-
-## Author
-
-una-sariel
